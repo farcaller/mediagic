@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<!-- уровень вывода информации в консоль. 0 - молчать, 1 - выводить с децл, 2 - выводить максимум -->
+	<verbose>2</verbose>
+
+	<!-- Системная кодировка-->
+	<system_encoding>UTF-8</system_encoding>
+
+	<!-- Логин/пароль к базе данных-->
+	<mediagic_db>
+		<server>localhost</server>
+		<username>mythtv</username>
+		<password>вписасть_сюда_пароль</password>
+		<db_name>mediagic</db_name>
+	</mediagic_db>
+
+	<!-- User agent браузера, можно посмотреть по ссылке http://whatsmyuseragent.com/ -->
+	<user_agent>Opera/9.80 (Macintosh; Intel Mac OS X; U; en) Presto/2.2.15 Version/10.00</user_agent>
+
+
+	<directories>
+		<!-- темповая директория, обычно /tmp/-->
+		<tmp>/tmp/</tmp>
+		
+		<!-- директория, где будут храниться обложки. Должен быть доступ на запись -->
+		<coverarts>/home/вашеимя/.mythtv/MythVideo/</coverarts>
+		
+		<!-- директория для удалённых файлов. Должен быть доступ на запись -->
+		<trash>/home/вашеимя/.local/share/Trash/files/</trash>
+	</directories>
+	
+	<coverart>
+		<!-- необходимое соотношение сторон для обложек, дефолтное значение 0.67 -->
+		<ratio>0.67</ratio>
+
+		<!-- допустимый лимит для предыдущего значения, дефолтное значение 0.05 -->
+		<tolerable_limit>0.05</tolerable_limit>
+
+		<!-- цвет фона обложки в случае изменения значения сторон -->
+		<background>000000</background>
+
+		<!-- генерировать отсутствующие обложки (вроде не работает сейчас) -->
+		<generate_missing>1</generate_missing>
+	</coverart>
+
+	<!-- обновлять данные MythTV. Поставить значение enable="0", если MythTV не используется -->
+	<mythtv enable="1">
+		<!-- сервер,юзернейм,пароль,имя базы данных для MythTV -->
+		<server>localhost</server>
+		<username>mythtv</username>
+		<password>вписасть_сюда_пароль</password>
+		<db_name>mythconverg</db_name>
+	</mythtv>
+	
+	<!-- Использовать email для писем: enable="1" - использовать-->
+	<email enable="0">
+		<!-- Кодировка для писем -->
+		<encoding>UTF-8</encoding>
+		<!-- рекомендую создать gmail-аккаунт специально для сервера -->
+		<!-- имя пользователя почтового аккаунта для сервера-->
+		<username>servername@gmail.com</username>
+		<!-- пароль почтового аккаунта-->
+		<password>password</password>
+
+		<!-- на какой адрес слать уведомления-->
+		<send_to>
+			<!-- адрес-->
+			<email>yourname@yourmail.com</email>
+			<!-- ваше имя-->
+			<name>Vasily Pupkin</name>
+		</send_to>
+
+		<!-- от какого имени слать уведомления-->
+		<send_from>
+			<!-- имя-->
+			<name>Server Name</name>
+			<!-- адрес-->
+			<email>servername@gmail.com</email>
+			<!-- тип отправки. Используйте тип "mail", если у вас настроеный mail-сервер, или "smtp" чтобы слать письма используя методы Медиаджика -->
+			<!-- если вы не понимаете о чём я говорю - пишите "smtp" -->
+			<type>smtp</type>
+
+			<!-- настройки smtp если вы использовали тип "smtp" -->
+			<smtp>
+				<!-- smtp-сервер требует аунтефикации: 1/0. Для gmail - 1 -->
+				<smtp_auth>1</smtp_auth>
+				<!-- Тип шифрования. Для gmail - tls -->
+				<smtp_secure>tls</smtp_secure>
+				<!-- Адрес smtp. Для gmail - smtp.gmail.com -->
+				<host>smtp.gmail.com</host>
+				<!-- Порт smtp. Для gmail - 587 -->
+				<port>587</port>
+			</smtp>
+		</send_from>
+		
+		<subject>
+			<!-- Префикс тем писем от медиаджика-->
+			<prefix>Медиаджик: </prefix>
+			<!-- Префикс темы письма с уведомлением-->
+			<start_download>Новый фильм: </start_download>
+		</subject>
+
+		<!-- Обработка ответов с управляющими командами.-->
+		<get_responses enable="1">
+			<!-- Слать команды клиенту rtorrent, enable="1". Путь к rtorrent RPC-->
+			<rtorrent_url enable="1">http://localhost/RPC2</rtorrent_url>
+			<!-- Путь к хосту IMAP. для gmail - imap.gmail.com:993/imap/ssl -->
+			<imap_host>imap.gmail.com:993/imap/ssl</imap_host>
+			<!-- папка со входящими письмами на IMAP-сервере -->
+			<imap_mailbox>INBOX</imap_mailbox>
+		</get_responses>
+	</email>
+	
+	<not_videos>m3u,jpg,png,gif,bmp,sfv,nfo,zip,txt,bup,ifo,mp3,rar,sub,srt,usf,ogg,wav,doc,rtf,me,readme,db,pdf,ini</not_videos>
+
+</config>

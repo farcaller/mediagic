@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>Status</title></head>
+	<body>
+		<div style="width: 100%;" align="center">
+			<div style="width: 640px; text-align:left; border: 1px solid #666666; padding: 5px;">
+				<span style="color: #000000;"><b>%r_status%</b></span><br>
+<!--files_block_start-->
+				<span style="color: #000000; font-size: small;">%d_count%</span><br>
+<!--file_start-->
+				<div style="position: relative; margin:5px; width: 615px; text-align:left; border: 1px solid #666666; padding: 5px;">
+					<div style="position: absolute; height: 90px; width:15px; text-align: center; background-color: #AAAAAA; border: 1px solid #666666; top: -1px; left: -1px;">
+						<div style="position: absolute; top: 40px; left: 3px;">%status_image%</div></div>
+					<div style="padding-left: 17px; height: 80px; width: 63px; text-align: center;">
+						%cover%</div>
+					<div style="position: absolute; top: 5px; left: 90px; width: 530px;">
+						<span style="color: #000000; font-weight: bold;">%title%</span><br>
+						<span style="color: #666666; font-size: small;"><b>%genres%</b> %countries% %year%</span>
+						<hr>
+						<span style="color: #000000; font-size: small;"><b>Downloaded:</b> %d_size% of %t_size% ( %percent% ) &nbsp; <b>Speed:</b> Up: %u_speed% / Down: %d_speed% </span><br>
+						<span style="color: #666666; font-size: small;">Planned end: %p_end% </span>
+					</div>
+				</div>
+<!--file_end-->
+<!--files_block_end-->
+			</div>
+			&nbsp;
+<!--devs_block_start-->
+			<div style="width: 640px; text-align:left; border: 1px solid #666666; padding: 5px;">
+				<span style="color: #000000;"><b>Disks statistics:</b></span><br><br>
+<!--dev_start-->
+				<span style="color: #000000; font-size: small;"><b>%dev_name%</b> mounted to <b>%mount_point%</b> : %disk_free% of %disk_total% is free</span><br>
+<!--dev_end-->
+			</div>
+<!--devs_block_end-->
+		</div>
+	</body>
+<html>

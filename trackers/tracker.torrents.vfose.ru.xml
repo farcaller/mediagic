@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Название, тип, кодировка трекера. Enable=0 запрещает использование этого конфигурационного файла -->
+<tracker name="DragonTorrents" type='Video' enable='1' encoding='UTF-8'>
+
+	<!-- ваши cookies, можно посмотреть в Опере кликнув правой кнопкой на сайте и выбрав "Site preferences"-->
+	<cookies>
+		<phpbb3_cqeo2_u>1</phpbb3_cqeo2_u>
+		<phpbb3_cqeo2_k></phpbb3_cqeo2_k>
+		<phpbb3_cqeo2_sid></phpbb3_cqeo2_sid>
+		<uid></uid>
+		<pass></pass>
+		<PHPSESSID></PHPSESSID>
+		<session></session>
+		<mybbuser></mybbuser>
+		<hsdn_top>1</hsdn_top>
+	</cookies>
+
+	<!-- качать только если сидов больше чем это кол-во -->
+	<minimum_number_of_seeds>100</minimum_number_of_seeds>
+
+
+	<!-- фильтры -->
+	<filters>
+		<!-- не качать всё, что содержит в своём названии следующие слова-->
+		<decline>Supernatural</decline>
+		<decline>прожектор</decline>
+		<decline>Остаться в живых</decline>
+		<decline>LOST</decline>
+		<decline>LostFilm.TV</decline>
+		<decline>TS</decline>
+		<decline>Cam</decline>
+		<decline>Наша раша</decline>
+		<decline>Наша Russia</decline>
+		<decline>Lost.</decline>
+		<decline>Даёшь Молодёжь</decline>
+		<decline>Даешь Молодежь</decline>
+
+		<!-- минимальный и максимальный размер файла в мегабайтах-->
+	 	<max_size>5120</max_size>
+	 	<min_size>80</min_size>
+	</filters>
+
+	<directories>
+		<!-- Директория, в которую нужно сохранять торрент-файлы-->
+		<!-- Внимание! торрент-клиент должен быть настроен на поиск новых торрент-файлов в этой директории-->
+		<torrents_dir>/home/вашеимя/torrents/</torrents_dir>
+
+		<!-- Директория, в которую торрент-клиент скачивает файлы-->
+		<datafiles_dir>/var/lib/mythtv/videos/downloads/</datafiles_dir>
+	</directories>
+
+<!-- дальше лучше не трогать, правда :) -->
+<!-- дальше лучше не трогать, правда :) -->
+<!-- дальше лучше не трогать, правда :) -->
+<!-- дальше лучше не трогать, правда :) -->
+<!-- дальше лучше не трогать, правда :) -->
+<!-- дальше лучше не трогать, правда :) -->
+
+	<!-- локальный путь к логотипу -->
+	<logo>images/dt.jpg</logo>
+	
+	<scrubbers>
+		<!-- искать информацию о фильмах: да - 1, нет - 0 -->
+		<automatic>1</automatic>
+		<!-- дефолтный скраббер -->
+		<default>DragonTorrents</default>	
+		<!-- релевантный скраббер -->
+		<relevant>DragonTorrents</relevant>
+	</scrubbers>
+
+	<search>
+		<!-- строка поиска -->
+		<url>http://torrents.vfose.ru/browse.php?search=%title&amp;incldead=1&amp;cat=13&amp;sort=7&amp;type=desc&amp;page=%page</url>
+		<!-- номер первой страницы-->
+		<start_page_number>0</start_page_number>
+		<!-- увеличивать номер страницы на-->
+		<page_increament>1</page_increament>
+	</search>
+
+	<regexp>
+		<!-- регексп для выборки торрент_ид-->
+		<torrent_id>/.*id=(\d*)$/</torrent_id>
+	</regexp>
+
+	<!-- это xpath. а вы что думали? эта херь говорит как парсить страницу с результатами поиска-->
+	<xpath>
+		<search_results>//tbody[@id="highlighted"]/tr</search_results>
+		<title>td[2]/a[1]/b[1]</title>
+		<size>td[6]</size>
+		<torrent_file_url>td[2]/a[3]</torrent_file_url>
+		<details_url>td[2]/a[1]</details_url>
+		<seeds_count>td[7]/b[1]/a[1]/font[1]</seeds_count>
+	</xpath>
+</tracker>
